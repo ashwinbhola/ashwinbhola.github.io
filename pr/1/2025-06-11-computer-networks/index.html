@@ -12,6 +12,7 @@
   
 
   <title>Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet | Blog</title>
+  <link rel="shortcut icon" href="/assets/img/tab_icon.png" type="image/png" />
 
   
   
@@ -337,7 +338,7 @@
 <h3 id="transport-layer-protocols">Transport Layer Protocols</h3>
 <p>This layer is dominated by 3 protocols: <strong>TCP, UDP, and QUIC</strong>. Depending on what guarantees you want, you can choose either of them to communicate with other machines.</p>
 
-<h3 id="udp-user-datagram-protocol---quick-and-dirty-delivery-service">UDP (User Datagram Protocol) –  Quick and Dirty Delivery Service</h3>
+<h3 id="1-udp-user-datagram-protocol---quick-and-dirty-delivery-service">1. UDP (User Datagram Protocol) –  Quick and Dirty Delivery Service</h3>
 <p><strong>UDP (User Datagram Protocol)</strong> is one of the fundamental building blocks of network communication. It’s designed for <strong>speed and efficiency</strong>, but that performance comes with a trade-off: UDP is inherently <strong>unreliable</strong>.</p>
 
 <p><img src="/assets/img/sys_design/networks/udp_packet.png" alt="UDP Datagram" class="mx-auto d-block" /></p>
@@ -373,7 +374,7 @@
 
 <p>In short, UDP favors <strong>performance over precision</strong> — and in the right scenarios, that’s exactly what you need. If you’re sending important data (like emails or files), you’d want something more reliable, like TCP, which checks for errors and delivery.</p>
 
-<h3 id="tcp-transmission-control-protocol---reliable-but-fussy-courier-service">TCP (Transmission Control Protocol) –  Reliable but Fussy Courier Service</h3>
+<h3 id="2-tcp-transmission-control-protocol---reliable-but-fussy-courier-service">2. TCP (Transmission Control Protocol) –  Reliable but Fussy Courier Service</h3>
 
 <table>
   <thead>
@@ -436,7 +437,7 @@
   <li>Even cybercriminals use TCP because it’s reliable and can be disguised as normal traffic (like HTTP)</li>
 </ol>
 
-<h3 id="quic---fast--secure-express-optional-read">QUIC –  Fast &amp; Secure Express [Optional Read]</h3>
+<h3 id="3-quic---fast--secure-express-optional-read">3. QUIC –  Fast &amp; Secure Express [Optional Read]</h3>
 <p>If TCP is like a reliable delivery truck, <strong>QUIC (Quick UDP Internet Connections)</strong> is more like a smart, encrypted drone: it avoids traffic, flies straight to your window, and delivers multiple packages simultaneously. Developed by Google, QUIC reimagines how data moves across the internet, addressing two major limitations of traditional transport protocols:</p>
 <ol>
   <li><strong>Slow start</strong>: Establishing a secure TCP connection involves multiple round trips between the client and server — first for the TCP handshake, then for TLS (Transport Layer Security, encrypts and secures the data). QUIC eliminates this delay by <strong>merging transport and encryption</strong> into a <strong>single handshake</strong>, dramatically speeding up connection times and boosting performance.</li>
