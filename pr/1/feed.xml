@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    
+    <title>Blog</title>
+    
+    
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>How Cārvāka Darśana Rejects Causality?</title>
+        
+        <dc:creator><![CDATA[ Ashwin Bhola ]]></dc:creator>
+        
+        <description>
+          Cārvāka&apos;s Epistemology - 
+          The reason to begin this blog with Cārvāka Darśana is that most people nowadays are, knowingly or unknowingly, Cārvākas to some extent. Cārvāka Darśana is the only Indian Philosophical school that brings the focus back to this world and body, rejecting transcendental entities altogether and also saving Indian Philosophy from...
+        </description>
+        <pubDate>Sun, 08 Jun 2025 00:00:00 -0400</pubDate>
+        <link>/2025-06-08-carvaka-epistemology-1/</link>
+        <guid isPermaLink="true">/2025-06-08-carvaka-epistemology-1/</guid>
+      </item>
+    
+  </channel>
+</rss>
