@@ -11,6 +11,7 @@ Networking is a foundational part of any system you’ll build as a developer. A
 
 In this post, we’ll peel back the curtain and demystify how computers communicate. While computer networking is a vast field, this blog (and others I’ll share) will focus on the just the very essential concepts every software developer should understand.
 
+
 ## Networking layers
 When we talk about how data moves across the internet, from your laptop to a server across the globe, it helps to think in layers. The **OSI Model** (Open Systems Interconnection Model) gives us a **layered view** of this journey. It is a **conceptual** framework that breaks the communication process into seven layers, each having a specific role in network communication. When your computer sends data, whether it’s a chat message, a video stream, or a web page, it doesn't just shoot that data across the internet in one go. Instead, it follows a carefully structured journey through the layers of the OSI model.
 
@@ -33,6 +34,7 @@ While the OSI model has seven layers, most developers arguably only need to focu
 4. **Data Link Layer** (Layer 2): This layer takes care of communication within a **local neighborhood** i.e. between devices on the same network. It wraps your data into **frames**, tags it with a **MAC address** (like a hardware name tag), and uses **error detection mechanisms** like checksums to identify **corrupted transmissions.** It also performs **media access control** i.e. it ensures that devices don’t all “talk” at once, which would cause network noise, thus acting as a **moderator** to determine how devices **access and share** the physical communication medium, helping prevent **collisions** and maintain **orderly data flow**. Analogy: Think of a traffic officer at a busy intersection, letting cars (data frames) move in turn, directing them to the right driveways (MAC addresses), and checking their license plates (checksums) for legitimacy.
 5. **Physical Layer** (Layer 1): Finally, we get to the bottom of the stack, the Physical Layer. This is the layer that handles the actual **transmission of raw bits**, 1s and 0s, over physical channels like Ethernet cables, fiber optics, or even Wi-Fi radio waves. This layer converts digital data from the Data Link Layer into electrical, optical, or electromagnetic signals, and vice versa on the receiving end. It defines how fast the bits are sent, what voltage levels mean “1” or “0”, and how those bits are physically encoded. It doesn’t know or care what the data means, it just makes sure it gets from one end to the other.
 
+
 ## Layer Protcols
 As we discussed earlier, in the OSI model, each layer communicates only with its peer layer on the other side -- it's like layers are having a long-distance conversation. But for these conversations to work, they need to speak the same language. That’s where **protocols** come in. 
 
@@ -43,8 +45,8 @@ You can think of layer protocols as **language contracts** -- agreed upon rules 
 
 Each protocol handles a specific part of the communication puzzle, ensuring that the data flows smoothly from one system to another, even across vast and complex networks.
 
-### Network Layer Protocols
 
+### Network Layer Protocols
 ![IP](/assets/img/sys_design/networks/ip.png){: .mx-auto.d-block :}
 
 **IP (Internet Protocol)** dominates the Network layer of the OSI model. It's job? **Addressing and routing** i.e. figuring out where your data needs to go and how to get it there.
@@ -71,6 +73,7 @@ Devices inside a **private network** (e.g., your laptop, phone, or smart TV) use
 There are 2 versions of IP addresses:
 1. **IPv4**: The older and still most widely used version. Example address: `192.168.0.1` -- it has 32 bits in total. Each number in the address (like `192`) is 8 bits, and there are 4 groups of them. This allows for about 4.3 billion unique IPv4 addresses, which can't handle the exploding number of devices on the internet.
 2. **IPv6**: The newer version designed to support the massive scale of the modern internet. It has 128 total bits -- 128 bits are split into 8 groups, and each group is 16 bits. Exmaple address: `2001:0db8:85a3:0000:0000:8a2e:0370:7334` 
+
 
 ### Transport Layer Protocols
 This layer is dominated by 3 protocols: **TCP, UDP, and QUIC**. Depending on what guarantees you want, you can choose either of them to communicate with other machines.
@@ -105,12 +108,12 @@ Common use cases that rely on UDP under the hood or in niche ways:
 
 In short, UDP favors **performance over precision** — and in the right scenarios, that's exactly what you need. If you’re sending important data (like emails or files), you’d want something more reliable, like TCP, which checks for errors and delivery.
 
+
 ### 2. TCP (Transmission Control Protocol) --  Reliable but Fussy Courier Service
 
 | ![TCP Flow](/assets/img/sys_design/networks/tcp_connection.png) | 
 |:--:| 
 | *TCP Connection Setup and Teardown Flow* |
-
 
 TCP is like sending a package with a tracking number and delivery confirmation -- everything is accounted for, and nothing is left to chance. It's a **connection oriented protocol**, meaning it establishes a **reliable** communication channel between sender and receiver before any data is transmitted.
 
@@ -150,12 +153,14 @@ Everyday use cases that rely on TCP:
 5. **Software Updates and Package Managers**: Tools like `apt`, `yum`, `pip` use TCP as it ensures files are downloaded completely and correctly
 6. Even cybercriminals use TCP because it’s reliable and can be disguised as normal traffic (like HTTP)
 
+
 ### 3. QUIC --  Fast & Secure Express [Optional Read]
 If TCP is like a reliable delivery truck, **QUIC (Quick UDP Internet Connections)** is more like a smart, encrypted drone: it avoids traffic, flies straight to your window, and delivers multiple packages simultaneously. Developed by Google, QUIC reimagines how data moves across the internet, addressing two major limitations of traditional transport protocols:
 1. **Slow start**: Establishing a secure TCP connection involves multiple round trips between the client and server — first for the TCP handshake, then for TLS (Transport Layer Security, encrypts and secures the data). QUIC eliminates this delay by **merging transport and encryption** into a **single handshake**, dramatically speeding up connection times and boosting performance.
 2. **Head-of-Line Blocking**: TCP ensures in-order delivery, which means if an early packet (say, packet #1) is lost, the receiver has to wait for it to be retransmitted before it can process subsequent packets (like #2, #3, and so on). QUIC, the foundation of HTTP/3, avoids this bottleneck by supporting **multiple independent streams**. Think of it as a highway with several lanes: if one lane is blocked, traffic in the others keeps flowing. Lost packets only stall the specific stream they belonged to, not the entire connection.
 
 By rethinking the fundamentals of transport layer communication, QUIC makes web browsing **faster, more efficient, and more secure**.
+
 
 ### Sockets
 Think of a **socket** as a doorway: applications use it to send and receive data, while the **OS kernel** does all the heavy lifting that happens beyond the door: 
