@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  
+
+  <title>Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet | Blog</title>
+
+  
+  
+  <meta name="author" content="Ashwin Bhola">
+  
+
+  <meta name="description" content="Unpacking sockets, TCP, UDP, and the OSI model, and how they silently power global communication">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Blog">
+  <meta property="og:title" content="Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet | Blog">
+  <meta property="og:description" content="Unpacking sockets, TCP, UDP, and the OSI model, and how they silently power global communication">
+
+  
+  <meta property="og:image" content="/assets/img/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  
+  <meta property="og:article:author" content="Ashwin Bhola">
+  
+  <meta property="og:article:published_time" content="2025-06-10T00:00:00-04:00">
+  <meta property="og:url" content="/2025-06-10-computer-networks/">
+  <link rel="canonical" href="/2025-06-10-computer-networks/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet | Blog">
+  <meta property="twitter:description" content="Unpacking sockets, TCP, UDP, and the OSI model, and how they silently power global communication">
+
+  
+  <meta name="twitter:image" content="/assets/img/avatar.png">
+  
+
+  
+
+
+  
+
+  
+  
+
+  
+
+</head>
+
+
+<body>
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="/">Blog</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://ashwinbhola.github.io">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: '/assets/data/searchcorpus.json' 
+    });
+  </script>
+</div>
+
+
+
+
+
+  
+
+
+
+<header class="header-section ">
+<div class="intro-header ">
+  
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet</h1>
+          
+            
+              <h2 class="post-subheading">Unpacking sockets, TCP, UDP, and the OSI model, and how they silently power global communication</h2>
+            
+          
+          
+           
+            
+            <span class="post-meta">Posted on June 10, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>
+
+
+
+</header>
+
+
+<main class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <div class="blog-post">
+        <p>Imagine you’re streaming your favorite show on Netflix, hopping on a video call with teammates across time zones, or just sending a quick message to a friend. Behind each of these simple actions, your device is taking part in a very real and <strong>highly structured</strong> conversation with other machines scattered across the globe. This <strong>invisible dialogue</strong> is made possible by the magic of computer networks.</p>
+
+<p>Networking is a foundational part of any system you’ll build as a developer. At its core, a network is just a medium that allows <strong>independent machines</strong> to exchange information. But how do these machines agree on how to talk? How do messages go to the right place? What happens if something goes wrong along the way?</p>
+
+<p>In this post, we’ll peel back the curtain and demystify how computers communicate. While computer networking is a vast field, this blog (and others I’ll share) will focus on the just the very essential concepts every software developer should understand.</p>
+
+<h3 id="networking-layers">Networking layers</h3>
+
+<p>When we talk about how data moves across the internet, from your laptop to a server across the globe, it helps to think in layers. The <strong>OSI Model</strong> (Open Systems Interconnection Model) gives us a <strong>layered view</strong> of this journey. It is a <strong>conceptual</strong> framework that breaks the communication process into seven layers, each having a specific role in network communication. When your computer sends data, whether it’s a chat message, a video stream, or a web page, it doesn’t just shoot that data across the internet in one go. Instead, it follows a carefully structured journey through the layers of the OSI model.</p>
+
+<p><img src="/assets/img/sys_design/osi.png" alt="OSI Model" /></p>
+
+<p>Each layer in the OSI model relies on the services of the layer below it while providing services to the layer above it. On the sender’s side, the message travels down the OSI stack. At each layer, additional information (called <strong>headers</strong>) is added, a process known as <strong>encapsulation</strong>. These headers contain the instructions needed to ensure the message can be properly delivered across the network. On the receiver’s side, the message flows up the OSI stack. Each layer reads and removes its corresponding header, a process known as <strong>decapsulation</strong>, revealing the original data, step by step.</p>
+
+<p>Each layer on one machine <strong>logically “speaks”</strong> directly to its corresponding (peer) layer on the other machine – even though in reality, data travels down through the OSI layers on the sender’s side and up through the layers on the receiver’s side. This conceptual exchange is known as <strong>layer-to-layer communication</strong>.</p>
+
+<p>How does the OSI model help?</p>
+<ol>
+  <li><strong>Standardization</strong>: OSI model standardizes the communication process ensuring that devices from different vendors and platforms can communicate with each other seamlessly</li>
+  <li><strong>Learning tool</strong>: The OSI model’s layered structure makes it an excellent way to understand how data moves through a network. By breaking the process into distinct, manageable layers, it allows us to study one piece at a time, making the complex world of network communication more digestible</li>
+</ol>
+
+<p>While the OSI model has seven layers, most developers arguably only need to focus on three key ones: Layer 3 (Network), Layer 4 (Transport), and Layer 7 (Application). But let’s zoom out briefly to see what each layer does:</p>
+<ol>
+  <li><strong>Application layer Block</strong> (Layers 5-7 combined): Although the OSI model defines three separate layers at the top (Application, Presentation, and Session), in real world use, we usually treat them as a single block: the Application Layer. This is where the magic starts – where users interact with software like web browsers, Zoom, or email apps. Think of it as the front door to network communication – everything else supports what happens here.</li>
+  <li><strong>Transport Layer</strong> (Layer 4): This layer is responsible for ensuring <strong>reliable and/or fast data transmission</strong> and splitting data into chunks (called segments). Analogy: Imagine trying to send a book through the mail, but all you have are small envelopes. So, you tear out each page, place it in an envelope, and number them. The Transport Layer does exactly this – it splits your data into parts, labels them, and keeps track of what was sent and received.</li>
+  <li><strong>Network Layer</strong> (Layer 3): Here’s where the <strong>addressing and navigation</strong> happens. This layer decides where data goes and plots the best route to get there (routing). It uses <strong>IP addresses</strong>, much like street addresses, to make sure your data reaches the right destination, whether that’s across the room or across the ocean. Analogy: You’ve addressed your envelopes with the recipient’s house number and ZIP code and the postal system has figure out the fastest, most efficient delivery route.</li>
+  <li><strong>Data Link Layer</strong> (Layer 2): This layer takes care of communication within a <strong>local neighborhood</strong> i.e. between devices on the same network. It wraps your data into <strong>frames</strong>, tags it with a <strong>MAC address</strong> (like a hardware name tag), and uses <strong>error detection mechanisms</strong> like checksums to identify <strong>corrupted transmissions.</strong> It also performs <strong>media access control</strong> i.e. it ensures that devices don’t all “talk” at once, which would cause network noise, thus acting as a <strong>moderator</strong> to determine how devices <strong>access and share</strong> the physical communication medium, helping prevent <strong>collisions</strong> and maintain <strong>orderly data flow</strong>. Analogy: Think of a traffic officer at a busy intersection, letting cars (data frames) move in turn, directing them to the right driveways (MAC addresses), and checking their license plates (checksums) for legitimacy.</li>
+  <li><strong>Physical Layer</strong> (Layer 1): Finally, we get to the bottom of the stack, the Physical Layer. This is the layer that handles the actual <strong>transmission of raw bits</strong>, 1s and 0s, over physical channels like Ethernet cables, fiber optics, or even Wi-Fi radio waves. This layer converts digital data from the Data Link Layer into electrical, optical, or electromagnetic signals, and vice versa on the receiving end. It defines how fast the bits are sent, what voltage levels mean “1” or “0”, and how those bits are physically encoded. It doesn’t know or care what the data means, it just makes sure it gets from one end to the other.</li>
+</ol>
+
+<h3 id="layer-protcols">Layer Protcols</h3>
+<p>As we discussed earlier, in the OSI model, each layer communicates only with its peer layer on the other side – it’s like layers are having a long-distance conversation. But for these conversations to work, they need to speak the same language. That’s where <strong>protocols</strong> come in.</p>
+
+<p>You can think of layer protocols as <strong>language contracts</strong> – agreed upon rules that ensure peer layers on different machines can understand each other and interpret messages correctly. Each layer uses its own protocol depending on its role:</p>
+<ul>
+  <li>The <strong>Transport Layer</strong> might use TCP for reliable delivery or UDP for fast delivery</li>
+  <li>The <strong>Network Layer</strong> uses IP to handle addressing and routing</li>
+  <li>The <strong>Application Layer</strong> uses protocols like HTTP, SMTP, or DNS, depending on the task</li>
+</ul>
+
+<p>Each protocol handles a specific part of the communication puzzle, ensuring that the data flows smoothly from one system to another, even across vast and complex networks.</p>
+
+<h4 id="network-layer-protocols">Network Layer Protocols</h4>
+
+<p><img src="/assets/img/sys_design/ip.png" alt="IP" /></p>
+
+<p><strong>IP (Internet Protocol)</strong> dominates the Network layer of the OSI model. It’s job? <strong>Addressing and routing</strong> i.e. figuring out where your data needs to go and how to get it there.</p>
+
+<p>IP breaks down the data segments coming from the Transport Layer (Layer 4) into smaller, manageable chunks called <strong>packets</strong>. Each packet is tagged with a source and destination using an <strong>IP header</strong> (typically 20–60 bytes), and then routed across the internet through multiple hops and networks. The IP header also contains a field called the <strong>Protocol Number</strong>, which helps the recipient machine identify whether the payload is TCP, UDP, ICMP, etc.</p>
+
+<p>IP is focused <strong>solely on delivery</strong>. IP doesn’t concern itself with:</p>
+<ul>
+  <li>What’s inside the packet</li>
+  <li>Whether the packet gets there</li>
+  <li>Whether it arrives in order</li>
+  <li>Whether it’s corrupted or duplicated order</li>
+</ul>
+
+<p>IP simply pushes the packet out the door and relies on Transport Layer protocols like TCP or UDP to fill in the gaps.</p>
+
+<p>What’s an <strong>IP Address</strong>? An IP address is like a digital home address – it uniquely identifies a machine on a network so others know where to send data. When a machine connects to a network (either physically through cables or wirelessly through Wi-Fi), the machine sends a <strong>DHCP (Dynamic Host Configuration Protocol) request</strong> to ask the local router (which is the only device it can talk to at the moment) for an IP address. The router, acting as the <strong>DHCP server</strong>, keeps a list of available IP addresses and assigns one to the machine. The machine can then send and receive information over the network.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Visible on the Internet?</th>
+      <th>Used For</th>
+      <th>Assigned By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Public IP</strong></td>
+      <td>Yes</td>
+      <td>Talking to the wider internet</td>
+      <td>Internet provider (ISP)</td>
+    </tr>
+    <tr>
+      <td><strong>Private IP</strong></td>
+      <td>No</td>
+      <td>Inside local networks (home, office)</td>
+      <td>Your router (via DHCP)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Devices inside a <strong>private network</strong> (e.g., your laptop, phone, or smart TV) use <strong>private IPs</strong>. Your router uses a <strong>public IP</strong> to communicate with the internet on behalf of your <strong>entire local network</strong>.</p>
+
+<p>There are 2 versions of IP addresses:</p>
+<ol>
+  <li><strong>IPv4</strong>: The older and still most widely used version. Example address: <code class="language-plaintext highlighter-rouge">192.168.0.1</code> – it has 32 bits in total. Each number in the address (like <code class="language-plaintext highlighter-rouge">192</code>) is 8 bits, and there are 4 groups of them. This allows for about 4.3 billion unique IPv4 addresses, which can’t handle the exploding number of devices on the internet.</li>
+  <li><strong>IPv6</strong>: The newer version designed to support the massive scale of the modern internet. It has 128 total bits – 128 bits are split into 8 groups, and each group is 16 bits. Exmaple address: <code class="language-plaintext highlighter-rouge">2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+</ol>
+
+<h4 id="transport-layer-protocols">Transport Layer Protocols</h4>
+<p>This layer is dominated by 3 protocols: <strong>TCP, UDP, and QUIC</strong>. Depending on what guarantees you want, you can choose either of them to communicate with other machines.</p>
+
+<h5 id="udp-user-datagram-protocol---quick-and-dirty-delivery-service">UDP (User Datagram Protocol) –  Quick and Dirty Delivery Service</h5>
+<p><strong>UDP (User Datagram Protocol)</strong> is one of the fundamental building blocks of network communication. It’s designed for <strong>speed and efficiency</strong>, but that performance comes with a trade-off: UDP is inherently <strong>unreliable</strong>.</p>
+
+<p><img src="/assets/img/sys_design/udp_packet.png" alt="UDP Datagram" /></p>
+
+<p>When data comes from the application layer (Layers 5-7 of the OSI model), it’s <strong>encapsulated</strong> in a <strong>UDP datagram</strong> by adding a <strong>lightweight</strong> 8 Byte header.</p>
+<ul>
+  <li><strong>Source Port</strong>: Port of the sender (16 bits)</li>
+  <li><strong>Destination Port</strong>: Port of the receiver (16 bits). This tells the receiving machine which application (e.g., a web server or DNS resolver) the data should be delivered to. Example: Port 80 → HTTP server; Port 53 → DNS service</li>
+  <li><strong>Length</strong>: Length of the UDP datagram (16 bits)</li>
+  <li><strong>Checksum</strong>: Optional error checking for the datagram (16 bits)</li>
+</ul>
+
+<p>These UDP datagrams are then sent directly without setting up a connection with the receiver – there’s <strong>no guarantee of delivery</strong>. Moreover, there are <strong>no acknowledgments</strong> and <strong>no retransmissions</strong> in this protcol i.e. If a datagram is lost, arrives corrupted, or shows up out of order, UDP won’t notice. It’s up to the application to implement any additional reliability, ordering, or error recovery, if needed.</p>
+
+<p>Think of UDP like dropping a postcard in a mailbox: it’s fast and simple, but you don’t get a confirmation that it arrived, and it might not show up at all. It’s a <strong>connectionless and stateless protocol</strong>, making it extremely lightweight and ideal for certain use cases. UDP is a great fit when:</p>
+<ul>
+  <li>Speed and low latency are more critical than perfect delivery</li>
+  <li>You can tolerate some data loss</li>
+  <li>You’re working with real-time or broadcast applications</li>
+</ul>
+
+<p>Common use cases that rely on UDP under the hood or in niche ways:</p>
+<ol>
+  <li><strong>Streaming Media (Audio/Video)</strong>: Real-time playback is more important than re-transmitting lost packets (e.g.,: Netflix, YouTube)</li>
+  <li><strong>VoIP (Voice over IP) and Video Conferencing</strong>: Speed is more important than perfection. It’s OK if a word or pixel drops here or there, as long as the conversation flows smoothly (e.g., Zoom, WhatsApp)</li>
+  <li><strong>DNS (Domain Name System)</strong>: DNS queries are small and fast; retransmission can be handled by the application if needed</li>
+  <li><strong>Online Gaming</strong>: Fast reactions are key. It’s more important to get updates quickly than perfectly</li>
+  <li><strong>Sensor Networks and IoT devices</strong>: These devices don’t need perfect delivery but quick and light communication to save battery and power (e.g., A weather sensor in your garden)</li>
+  <li><strong>Log Shipping and Telemetry</strong>: Logs/metrics are typically fire-and-forget and tolerant to loss</li>
+  <li><strong>Video Surveillance Systems</strong>: Dropped frames are acceptable but delay is not</li>
+  <li><strong>One-to-many communication</strong>: <strong>Broadcasting and multicasting</strong> are easier with UDP because UDP is connectionless and doesn’t require a <strong>one-to-one relationship</strong> like TCP does (e.g., Finding Devices on a Network)</li>
+</ol>
+
+<p>In short, UDP favors <strong>performance over precision</strong> — and in the right scenarios, that’s exactly what you need. If you’re sending important data (like emails or files), you’d want something more reliable, like TCP, which checks for errors and delivery.</p>
+
+<h5 id="tcp-transmission-control-protocol---reliable-but-fussy-courier-service">TCP (Transmission Control Protocol) –  Reliable but Fussy Courier Service</h5>
+
+<p><img src="/assets/img/sys_design/tcp_connection.png" alt="TCP Flow" /></p>
+
+<p>TCP is like sending a package with a tracking number and delivery confirmation – everything is accounted for, and nothing is left to chance. It’s a <strong>connection oriented protocol</strong>, meaning it establishes a <strong>reliable</strong> communication channel between sender and receiver before any data is transmitted.</p>
+
+<p>To initiate this connection, TCP uses a <strong>three step handshake</strong>:</p>
+<ul>
+  <li>The client sends a SYN (synchronize) message to the server – essentially saying, “Can you hear me?”</li>
+  <li>The server replies with a SYN-ACK – “I hear you, Can you hear me?”</li>
+  <li>The client responds with an ACK  – “I hear you”</li>
+</ul>
+
+<p>Once connected, TCP ensures <strong>reliable, ordered delivery</strong> through a number of built-in mechanisms. Every TCP segment that is sent is <strong>numbered</strong> (so it arrives in order), <strong>checked for damages</strong> (error checking), and <strong>confirmed</strong> when delivered (acknowledgement). If something is lost or corrupted, it is automatically re-sent.</p>
+
+<p>Data from the application layer (Layers 5–7 of the OSI model) is encapsulated into <strong>TCP segments</strong>, each with a header that’s 20 to 60 bytes long. The header includes:</p>
+<ul>
+  <li><strong>Source and Destination Ports</strong></li>
+  <li><strong>Sequence numbers</strong>: Indicate where this segment fits in the overall data stream</li>
+  <li><strong>Acknowledgment numbers</strong>: Confirms safe delivery of everything received so far and tells the sender exactly where to resume</li>
+  <li><strong>Checksum</strong>: Detects errors</li>
+  <li><strong>TCP flags</strong>: Indicate the segment’s role – starting (SYN), ending (FIN), acknowledging (ACK), etc</li>
+</ul>
+
+<p><img src="/assets/img/sys_design/tcp_packet.png" alt="TCP Segment" /></p>
+
+<p>As you can see, the TCP header is more <strong>complex and bulky</strong> compared to UDP — but that complexity is what enables its <strong>reliability, ordering, and congestion-awareness</strong>. TCP also implements:</p>
+<ul>
+  <li><strong>Flow control</strong>: Prevents the sender from overwhelming the receiver. This is managed using a <strong>sliding window</strong> and the <strong>Window Size</strong> field in the TCP header, which tells the sender how much data the receiver is currently able to handle</li>
+  <li><strong>Congestion control</strong>: Even if the receiver can handle more, the network in between might be struggling. TCP watches for signs of congestion (like packet loss or delays) and slows down when needed</li>
+</ul>
+
+<p>Ending a TCP connection is just as careful as starting one – think of it as a polite goodbye at the end of a phone call. It’s a <strong>four step</strong> process:</p>
+<ul>
+  <li>The side initiating the close (e.g., the client) sends a FIN (finish) flag —- “I’m done sending data and want to terminate this connection”</li>
+  <li>The other side (e.g., the server) responds with an ACK — “Got it”</li>
+  <li>The server might still be sending data. Once it’s finished sending data, it sends its own FIN</li>
+  <li>The client replies with a final ACK, confirming the shutdown</li>
+</ul>
+
+<p>TCP wants to make sure all data is safely delivered before closing the connection. That’s why it doesn’t just cut the cord but confirms that both sides are truly finished. Since TCP connections are <strong>persistent</strong>, one of the machines must <strong>explicitly initiate</strong> this <strong>connection teardown</strong> to end communication.</p>
+
+<p>Everyday use cases that rely on TCP:</p>
+<ol>
+  <li><strong>Web browsing</strong> (HTTP/HTTPS): Reliable, ordered delivery of web pages and resources</li>
+  <li><strong>Emails</strong> (SMTP, IMAP): TCP ensures complete and correct delivery of messages</li>
+  <li><strong>File transfers</strong> (FTP, SFTP): Accuracy and reliability in transferring large files</li>
+  <li><strong>Remote access</strong> (SSH): TCP ensures secure and uninterrupted command-line sessions</li>
+  <li><strong>Software Updates and Package Managers</strong>: Tools like <code class="language-plaintext highlighter-rouge">apt</code>, <code class="language-plaintext highlighter-rouge">yum</code>, <code class="language-plaintext highlighter-rouge">pip</code> use TCP as it ensures files are downloaded completely and correctly</li>
+  <li>Even cybercriminals use TCP because it’s reliable and can be disguised as normal traffic (like HTTP)</li>
+</ol>
+
+<h5 id="quic---fast--secure-express-optional-read">QUIC –  Fast &amp; Secure Express [Optional Read]</h5>
+<p>If TCP is like a reliable delivery truck, <strong>QUIC (Quick UDP Internet Connections)</strong> is more like a smart, encrypted drone: it avoids traffic, flies straight to your window, and delivers multiple packages simultaneously. Developed by Google, QUIC reimagines how data moves across the internet, addressing two major limitations of traditional transport protocols:</p>
+<ol>
+  <li><strong>Slow start</strong>: Establishing a secure TCP connection involves multiple round trips between the client and server — first for the TCP handshake, then for TLS (Transport Layer Security, encrypts and secures the data). QUIC eliminates this delay by <strong>merging transport and encryption</strong> into a <strong>single handshake</strong>, dramatically speeding up connection times and boosting performance.</li>
+  <li><strong>Head-of-Line Blocking</strong>: TCP ensures in-order delivery, which means if an early packet (say, packet #1) is lost, the receiver has to wait for it to be retransmitted before it can process subsequent packets (like #2, #3, and so on). QUIC, the foundation of HTTP/3, avoids this bottleneck by supporting <strong>multiple independent streams</strong>. Think of it as a highway with several lanes: if one lane is blocked, traffic in the others keeps flowing. Lost packets only stall the specific stream they belonged to, not the entire connection.</li>
+</ol>
+
+<p>By rethinking the fundamentals of transport layer communication, QUIC makes web browsing <strong>faster, more efficient, and more secure</strong>.</p>
+
+<h3 id="sockets">Sockets</h3>
+
+<p>Think of a <strong>socket</strong> as a doorway: applications use it to send and receive data, while the <strong>OS kernel</strong> does all the heavy lifting that happens beyond the door:</p>
+<ul>
+  <li>Receiving and assembling IP packets</li>
+  <li>Managing ports, maintaining connections, ensuring reliability, and more</li>
+</ul>
+
+<p>In essence, sockets serve as an <strong>interface</strong> between <strong>user space applications</strong> and the <strong>kernel’s networking stack</strong>. They are <strong>virtual endpoints</strong>, that allow applications to connect, send, and receive data over the network, without having to deal directly with physical networking hardware or low-level protocols. It’s important to note that a socket isn’t a physical or hardware component; it’s entirely a <strong>software construct</strong>.</p>
+
+<p>By <strong>abstracting</strong> away the complexities of underlying protocols like TCP, UDP, and IP, sockets offer developers a clean, standardized way to interact with the network. Each socket is uniquely identified by a combination of an IP address and a port number. When paired with a transport protocol (TCP or UDP), this forms a complete communication endpoint.</p>
+
+<p>There’s no better way to truly understand how TCP and UDP work than by building them yourself. Check out <a href="https://github.com/ashwinbhola/experimental/tree/main/basic_servers">these</a> examples showing how to create simple TCP and UDP servers in Python using the standard socket library.</p>
+
+<p>The deeper you go into networking, the more you appreciate the elegance behind every message, every stream, every click. In this post, we uncovered the foundational layers that make communication between machines possible, from sockets and transport protocols to IP addressing and the OSI model. These building blocks quietly power every interaction on the internet.</p>
+
+<p>Thanks for hanging out and reading along. In the next post, we’ll move up the stack and explore the Application Layer, where all the user facing magic happens through protocols like HTTP.</p>
+
+      </div>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#System Design">System Design</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-06-08-carvaka-epistemology-1/" data-toggle="tooltip" data-placement="top" title="How Cārvāka Darśana Rejects Causality?">
+            <i class="fas fa-arrow-left" alt="Previous Post"></i>
+            <span class="d-none d-sm-inline-block">Previous Post</span>
+          </a>
+        </li>
+        
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+  
+
+
+
+    </div>
+  </div>
+</main>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      
+<ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:ab8084@nyu.edu" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/ashwinbhola" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/ashwinbhola" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+
+      
+      <p class="copyright text-muted">
+      
+        Ashwin Bhola
+        &nbsp;&bull;&nbsp;
+      
+      2025
+
+      
+
+      
+
+      
+
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
