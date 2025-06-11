@@ -3,6 +3,7 @@ layout: post
 title: How Cārvāka Darśana Rejects Causality?
 subtitle: Cārvāka's Epistemology
 tags: [Philosophy]
+readtime: true
 ---
 
 The reason to begin this blog with Cārvāka Darśana is that most people nowadays are, knowingly or unknowingly, Cārvākas to some extent. Cārvāka Darśana is the only Indian Philosophical school that brings the focus back to this world and body, rejecting transcendental entities altogether and also saving Indian Philosophy from dogmatism. Metaphysics is a result of Epistemology i.e. what one believes about reality is a result of what they think is a valid source of knowledge.
