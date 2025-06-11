@@ -45,9 +45,7 @@ Each protocol handles a specific part of the communication puzzle, ensuring that
 
 ### Network Layer Protocols
 
-| ![IP](/assets/img/sys_design/networks/ip.png) | 
-|:--:| 
-| *IP Packet* |
+![IP](/assets/img/sys_design/networks/ip.png){: .mx-auto.d-block :}
 
 **IP (Internet Protocol)** dominates the Network layer of the OSI model. It's job? **Addressing and routing** i.e. figuring out where your data needs to go and how to get it there.
 
@@ -80,9 +78,7 @@ This layer is dominated by 3 protocols: **TCP, UDP, and QUIC**. Depending on wha
 ### UDP (User Datagram Protocol) --  Quick and Dirty Delivery Service
 **UDP (User Datagram Protocol)** is one of the fundamental building blocks of network communication. It’s designed for **speed and efficiency**, but that performance comes with a trade-off: UDP is inherently **unreliable**.
 
-| ![UDP Datagram](/assets/img/sys_design/networks/udp_packet.png) | 
-|:--:| 
-| *UDP Datagram* |
+![UDP Datagram](/assets/img/sys_design/networks/udp_packet.png){: .mx-auto.d-block :}
 
 When data comes from the application layer (Layers 5-7 of the OSI model), it's **encapsulated** in a **UDP datagram** by adding a **lightweight** 8 Byte header.
 - **Source Port**: Port of the sender (16 bits)
@@ -132,9 +128,7 @@ Data from the application layer (Layers 5–7 of the OSI model) is encapsulated 
 - **Checksum**: Detects errors
 - **TCP flags**: Indicate the segment’s role -- starting (SYN), ending (FIN), acknowledging (ACK), etc
 
-| ![TCP Segment](/assets/img/sys_design/networks/tcp_packet.png) | 
-|:--:| 
-| *TCP Segment* |
+![TCP Segment](/assets/img/sys_design/networks/tcp_packet.png){: .mx-auto.d-block :}
 
 As you can see, the TCP header is more **complex and bulky** compared to UDP — but that complexity is what enables its **reliability, ordering, and congestion-awareness**. TCP also implements:
 - **Flow control**: Prevents the sender from overwhelming the receiver. This is managed using a **sliding window** and the **Window Size** field in the TCP header, which tells the sender how much data the receiver is currently able to handle
