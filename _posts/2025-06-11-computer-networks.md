@@ -75,7 +75,7 @@ There are 2 versions of IP addresses:
 ### Transport Layer Protocols
 This layer is dominated by 3 protocols: **TCP, UDP, and QUIC**. Depending on what guarantees you want, you can choose either of them to communicate with other machines.
 
-### UDP (User Datagram Protocol) --  Quick and Dirty Delivery Service
+### 1. UDP (User Datagram Protocol) --  Quick and Dirty Delivery Service
 **UDP (User Datagram Protocol)** is one of the fundamental building blocks of network communication. It’s designed for **speed and efficiency**, but that performance comes with a trade-off: UDP is inherently **unreliable**.
 
 ![UDP Datagram](/assets/img/sys_design/networks/udp_packet.png){: .mx-auto.d-block :}
@@ -105,7 +105,7 @@ Common use cases that rely on UDP under the hood or in niche ways:
 
 In short, UDP favors **performance over precision** — and in the right scenarios, that's exactly what you need. If you’re sending important data (like emails or files), you’d want something more reliable, like TCP, which checks for errors and delivery.
 
-### TCP (Transmission Control Protocol) --  Reliable but Fussy Courier Service
+### 2. TCP (Transmission Control Protocol) --  Reliable but Fussy Courier Service
 
 | ![TCP Flow](/assets/img/sys_design/networks/tcp_connection.png) | 
 |:--:| 
@@ -150,7 +150,7 @@ Everyday use cases that rely on TCP:
 5. **Software Updates and Package Managers**: Tools like `apt`, `yum`, `pip` use TCP as it ensures files are downloaded completely and correctly
 6. Even cybercriminals use TCP because it’s reliable and can be disguised as normal traffic (like HTTP)
 
-### QUIC --  Fast & Secure Express [Optional Read]
+### 3. QUIC --  Fast & Secure Express [Optional Read]
 If TCP is like a reliable delivery truck, **QUIC (Quick UDP Internet Connections)** is more like a smart, encrypted drone: it avoids traffic, flies straight to your window, and delivers multiple packages simultaneously. Developed by Google, QUIC reimagines how data moves across the internet, addressing two major limitations of traditional transport protocols:
 1. **Slow start**: Establishing a secure TCP connection involves multiple round trips between the client and server — first for the TCP handshake, then for TLS (Transport Layer Security, encrypts and secures the data). QUIC eliminates this delay by **merging transport and encryption** into a **single handshake**, dramatically speeding up connection times and boosting performance.
 2. **Head-of-Line Blocking**: TCP ensures in-order delivery, which means if an early packet (say, packet #1) is lost, the receiver has to wait for it to be retransmitted before it can process subsequent packets (like #2, #3, and so on). QUIC, the foundation of HTTP/3, avoids this bottleneck by supporting **multiple independent streams**. Think of it as a highway with several lanes: if one lane is blocked, traffic in the others keeps flowing. Lost packets only stall the specific stream they belonged to, not the entire connection.
