@@ -29,6 +29,7 @@ html {
 body {
   font-family: var(--body-font);
   font-size: 1.125rem;
+  font-weight: light;
   color: var(--text-col);
   position: relative;
   background-color: var(--page-col);
