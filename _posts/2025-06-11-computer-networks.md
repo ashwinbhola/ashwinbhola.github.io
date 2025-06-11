@@ -14,7 +14,9 @@ In this post, we’ll peel back the curtain and demystify how computers communic
 ## Networking layers
 When we talk about how data moves across the internet, from your laptop to a server across the globe, it helps to think in layers. The **OSI Model** (Open Systems Interconnection Model) gives us a **layered view** of this journey. It is a **conceptual** framework that breaks the communication process into seven layers, each having a specific role in network communication. When your computer sends data, whether it’s a chat message, a video stream, or a web page, it doesn't just shoot that data across the internet in one go. Instead, it follows a carefully structured journey through the layers of the OSI model.
 
-![OSI Model](/assets/img/sys_design/networks/osi.png)
+| ![OSI Model](/assets/img/sys_design/networks/osi.png) | 
+|:--:| 
+| *OSI Model* |
 
 Each layer in the OSI model relies on the services of the layer below it while providing services to the layer above it. On the sender’s side, the message travels down the OSI stack. At each layer, additional information (called **headers**) is added, a process known as **encapsulation**. These headers contain the instructions needed to ensure the message can be properly delivered across the network. On the receiver’s side, the message flows up the OSI stack. Each layer reads and removes its corresponding header, a process known as **decapsulation**, revealing the original data, step by step.
 
@@ -43,7 +45,9 @@ Each protocol handles a specific part of the communication puzzle, ensuring that
 
 ### Network Layer Protocols
 
-![IP](/assets/img/sys_design/networks/ip.png)
+| ![IP](/assets/img/sys_design/networks/ip.png) | 
+|:--:| 
+| *IP Packet* |
 
 **IP (Internet Protocol)** dominates the Network layer of the OSI model. It's job? **Addressing and routing** i.e. figuring out where your data needs to go and how to get it there.
 
@@ -76,7 +80,9 @@ This layer is dominated by 3 protocols: **TCP, UDP, and QUIC**. Depending on wha
 ### UDP (User Datagram Protocol) --  Quick and Dirty Delivery Service
 **UDP (User Datagram Protocol)** is one of the fundamental building blocks of network communication. It’s designed for **speed and efficiency**, but that performance comes with a trade-off: UDP is inherently **unreliable**.
 
-![UDP Datagram](/assets/img/sys_design/networks/udp_packet.png)
+| ![UDP Datagram](/assets/img/sys_design/networks/udp_packet.png) | 
+|:--:| 
+| *UDP Datagram* |
 
 When data comes from the application layer (Layers 5-7 of the OSI model), it's **encapsulated** in a **UDP datagram** by adding a **lightweight** 8 Byte header.
 - **Source Port**: Port of the sender (16 bits)
@@ -105,7 +111,10 @@ In short, UDP favors **performance over precision** — and in the right scenari
 
 ### TCP (Transmission Control Protocol) --  Reliable but Fussy Courier Service
 
-![TCP Flow](/assets/img/sys_design/networks/tcp_connection.png)
+| ![TCP Flow](/assets/img/sys_design/networks/tcp_connection.png) | 
+|:--:| 
+| *TCP Connection Setup and Teardown Flow* |
+
 
 TCP is like sending a package with a tracking number and delivery confirmation -- everything is accounted for, and nothing is left to chance. It's a **connection oriented protocol**, meaning it establishes a **reliable** communication channel between sender and receiver before any data is transmitted.
 
@@ -123,7 +132,9 @@ Data from the application layer (Layers 5–7 of the OSI model) is encapsulated 
 - **Checksum**: Detects errors
 - **TCP flags**: Indicate the segment’s role -- starting (SYN), ending (FIN), acknowledging (ACK), etc
 
-![TCP Segment](/assets/img/sys_design/networks/tcp_packet.png)
+| ![TCP Segment](/assets/img/sys_design/networks/tcp_packet.png) | 
+|:--:| 
+| *TCP Segment* |
 
 As you can see, the TCP header is more **complex and bulky** compared to UDP — but that complexity is what enables its **reliability, ordering, and congestion-awareness**. TCP also implements:
 - **Flow control**: Prevents the sender from overwhelming the receiver. This is managed using a **sliding window** and the **Window Size** field in the TCP header, which tells the sender how much data the receiver is currently able to handle
