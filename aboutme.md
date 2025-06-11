@@ -1,16 +1,10 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: "The person behind the writings"
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+I’m a Research Engineer at Bloomberg with a strong foundation in machine learning and over five years of experience in the industry. My professional journey has immersed me in the worlds of software design, systems architecture, and cutting-edge AI algorithms. But beyond the code and data, I’m deeply drawn to the human side of knowledge — philosophy, psychology, and sociology.
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+This blog is my space to explore these seemingly diverse interests. Whether it’s unpacking a technical concept, reflections on the ideas of great philosophers, or musings on consciousness and society, I write to learn, question, and share. If you're curious about how an engineering mind introspects about self and society, you're in the right place.
 
-What else do you need?
-
-### My story
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
