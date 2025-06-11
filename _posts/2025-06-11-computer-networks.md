@@ -3,6 +3,7 @@ layout: post
 title: "Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet"
 subtitle: "Unpacking sockets, TCP, UDP, and the OSI model, and how they silently power global communication"
 tags: ["System Design"]
+readtime: true
 ---
 
 Imagine you're streaming your favorite show on Netflix, hopping on a video call with teammates across time zones, or just sending a quick message to a friend. Behind each of these simple actions, your device is taking part in a very real and **highly structured** conversation with other machines scattered across the globe. This **invisible dialogue** is made possible by the magic of computer networks.
