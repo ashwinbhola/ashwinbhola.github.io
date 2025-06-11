@@ -283,18 +283,7 @@
 
 <h3 id="network-layer-protocols">Network Layer Protocols</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/img/sys_design/networks/ip.png" alt="IP" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>IP Packet</em></td>
-    </tr>
-  </tbody>
-</table>
+<p><img src="/assets/img/sys_design/networks/ip.png" alt="IP" class="mx-auto d-block" /></p>
 
 <p><strong>IP (Internet Protocol)</strong> dominates the Network layer of the OSI model. It’s job? <strong>Addressing and routing</strong> i.e. figuring out where your data needs to go and how to get it there.</p>
 
@@ -351,18 +340,7 @@
 <h3 id="udp-user-datagram-protocol---quick-and-dirty-delivery-service">UDP (User Datagram Protocol) –  Quick and Dirty Delivery Service</h3>
 <p><strong>UDP (User Datagram Protocol)</strong> is one of the fundamental building blocks of network communication. It’s designed for <strong>speed and efficiency</strong>, but that performance comes with a trade-off: UDP is inherently <strong>unreliable</strong>.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/img/sys_design/networks/udp_packet.png" alt="UDP Datagram" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>UDP Datagram</em></td>
-    </tr>
-  </tbody>
-</table>
+<p><img src="/assets/img/sys_design/networks/udp_packet.png" alt="UDP Datagram" class="mx-auto d-block" /></p>
 
 <p>When data comes from the application layer (Layers 5-7 of the OSI model), it’s <strong>encapsulated</strong> in a <strong>UDP datagram</strong> by adding a <strong>lightweight</strong> 8 Byte header.</p>
 <ul>
@@ -430,18 +408,7 @@
   <li><strong>TCP flags</strong>: Indicate the segment’s role – starting (SYN), ending (FIN), acknowledging (ACK), etc</li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/img/sys_design/networks/tcp_packet.png" alt="TCP Segment" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>TCP Segment</em></td>
-    </tr>
-  </tbody>
-</table>
+<p><img src="/assets/img/sys_design/networks/tcp_packet.png" alt="TCP Segment" class="mx-auto d-block" /></p>
 
 <p>As you can see, the TCP header is more <strong>complex and bulky</strong> compared to UDP — but that complexity is what enables its <strong>reliability, ordering, and congestion-awareness</strong>. TCP also implements:</p>
 <ul>
