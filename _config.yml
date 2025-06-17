@@ -22,6 +22,9 @@ author: Ashwin Bhola
 navbar-links:
   Home: "https://ashwinbhola.github.io"
   About Me: "aboutme"
+  Categories:
+    - Philosophy: "philosophy"
+    - System Design: "system_design"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
@@ -33,7 +36,7 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/avatar.png"
+avatar: "/assets/img/avatar_new.jpg"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
@@ -141,9 +144,9 @@ navbar-var-length: false
 page-col: "#FFFFFF"
 text-col: "#404040"
 link-col: "#ff8c00"
-hover-col: "#cd5000"
-navbar-col: "#EAEAEA"
-navbar-text-col: "#404040"
+hover-col: "#ff914d"
+navbar-col: "#2b2b2b"
+navbar-text-col: "#f0f0f0"
 navbar-border-col: "#DDDDDD"
 footer-col: "#EAEAEA"
 footer-text-col: "#777777"

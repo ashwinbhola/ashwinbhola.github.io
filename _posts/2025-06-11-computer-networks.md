@@ -2,7 +2,7 @@
 layout: post
 title: "🔌 Inside the Internet’s Nervous System: The Hidden Journey of a Network Packet"
 subtitle: "Unpacking sockets, TCP, UDP, and the OSI model, and how they silently power global communication"
-tags: ["System Design"]
+tags: ["system-design"]
 readtime: true
 ---
 
