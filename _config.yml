@@ -22,6 +22,7 @@ author: Ashwin Bhola
 navbar-links:
   Home: "https://ashwinbhola.github.io"
   About Me: "aboutme"
+  Philosophy: "philosophy"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
