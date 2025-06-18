@@ -37,4 +37,4 @@ Again, this is inductive reasoning at play - we take a few observed cases of co-
 
 In questioning the foundations of knowledge, perhaps Cārvāka leaves us with more to unlearn than to learn.
 
-Thanks for reading -— if this challenged your assumptions, the Cārvākas would be pleased!
+Thanks for reading -- if this challenged your assumptions, the Cārvākas would be pleased!

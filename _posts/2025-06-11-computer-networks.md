@@ -107,7 +107,7 @@ Common use cases that rely on UDP under the hood or in niche ways:
 7. **Video Surveillance Systems**: Dropped frames are acceptable but delay is not
 8. **One-to-many communication**: **Broadcasting and multicasting** are easier with UDP because UDP is connectionless and doesn't require a **one-to-one relationship** like TCP does (e.g., Finding Devices on a Network)
 
-In short, UDP favors **performance over precision** — and in the right scenarios, that's exactly what you need. If you’re sending important data (like emails or files), you’d want something more reliable, like TCP, which checks for errors and delivery.
+In short, UDP favors **performance over precision** - and in the right scenarios, that's exactly what you need. If you’re sending important data (like emails or files), you’d want something more reliable, like TCP, which checks for errors and delivery.
 
 
 ### 2. TCP (Transmission Control Protocol) --  Reliable but Fussy Courier Service
@@ -134,13 +134,13 @@ Data from the application layer (Layers 5–7 of the OSI model) is encapsulated 
 
 ![TCP Segment](/assets/img/sys_design/networks/tcp_packet.png){: .mx-auto.d-block :}
 
-As you can see, the TCP header is more **complex and bulky** compared to UDP — but that complexity is what enables its **reliability, ordering, and congestion-awareness**. TCP also implements:
+As you can see, the TCP header is more **complex and bulky** compared to UDP - but that complexity is what enables its **reliability, ordering, and congestion-awareness**. TCP also implements:
 - **Flow control**: Prevents the sender from overwhelming the receiver. This is managed using a **sliding window** and the **Window Size** field in the TCP header, which tells the sender how much data the receiver is currently able to handle
 - **Congestion control**: Even if the receiver can handle more, the network in between might be struggling. TCP watches for signs of congestion (like packet loss or delays) and slows down when needed
 
 Ending a TCP connection is just as careful as starting one -- think of it as a polite goodbye at the end of a phone call. It’s a **four step** process:
-- The side initiating the close (e.g., the client) sends a FIN (finish) flag —- “I’m done sending data and want to terminate this connection”
-- The other side (e.g., the server) responds with an ACK — “Got it”
+- The side initiating the close (e.g., the client) sends a FIN (finish) flag -- “I’m done sending data and want to terminate this connection”
+- The other side (e.g., the server) responds with an ACK - “Got it”
 - The server might still be sending data. Once it’s finished sending data, it sends its own FIN
 - The client replies with a final ACK, confirming the shutdown
 
@@ -157,7 +157,7 @@ Everyday use cases that rely on TCP:
 
 ### 3. QUIC --  Fast & Secure Express [Optional Read]
 If TCP is like a reliable delivery truck, **QUIC (Quick UDP Internet Connections)** is more like a smart, encrypted drone: it avoids traffic, flies straight to your window, and delivers multiple packages simultaneously. Developed by Google, QUIC reimagines how data moves across the internet, addressing two major limitations of traditional transport protocols:
-1. **Slow start**: Establishing a secure TCP connection involves multiple round trips between the client and server — first for the TCP handshake, then for TLS (Transport Layer Security, encrypts and secures the data). QUIC eliminates this delay by **merging transport and encryption** into a **single handshake**, dramatically speeding up connection times and boosting performance.
+1. **Slow start**: Establishing a secure TCP connection involves multiple round trips between the client and server - first for the TCP handshake, then for TLS (Transport Layer Security, encrypts and secures the data). QUIC eliminates this delay by **merging transport and encryption** into a **single handshake**, dramatically speeding up connection times and boosting performance.
 2. **Head-of-Line Blocking**: TCP ensures in-order delivery, which means if an early packet (say, packet #1) is lost, the receiver has to wait for it to be retransmitted before it can process subsequent packets (like #2, #3, and so on). QUIC, the foundation of HTTP/3, avoids this bottleneck by supporting **multiple independent streams**. Think of it as a highway with several lanes: if one lane is blocked, traffic in the others keeps flowing. Lost packets only stall the specific stream they belonged to, not the entire connection.
 
 By rethinking the fundamentals of transport layer communication, QUIC makes web browsing **faster, more efficient, and more secure**.
