@@ -19,7 +19,7 @@ layout: null
   --footer-hover-col: {{ site.footer-hover-col | default: "#0085A1" }};
 
   /* common CSS variables */
-  --body-font: 'Proxima Nova', 'Trebuchet MS', 'Lora', 'Times New Roman', serif;
+  --body-font: 'Source Sans 3', 'Trebuchet MS', 'Lora', 'Times New Roman', serif;
   --header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --mid-col: #808080;
 }
@@ -32,7 +32,8 @@ html {
 
 body {
   font-family: var(--body-font);
-  font-size: 1.125rem;
+  font-size: 1.16rem;
+  font-weight: 400;
   color: var(--text-col);
   position: relative;
   background-color: var(--page-col);
@@ -44,6 +45,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.6;
 }
 body > main {
   flex: 1;
@@ -59,18 +61,31 @@ h1,h2,h3,h4,h5,h6 {
 }
 h1 {
   font-size: 2.25rem;
+  margin-top: 2.25rem;
 }
 h2 {
   font-size: 1.875rem;
+  margin-top: 1.875rem;
 }
 h3 {
   font-size: 1.5rem;
+  margin-top: 1.5rem;
 }
 h4 {
-  font-size: 1.125rem;
+  font-size: 1.3rem;
+  margin-top: 1.3rem;
 }
-h1, h2, h3, h4 {
-  margin-top: 1.25rem;
+h1 + p {
+  margin-top: 0.8em;
+}
+h2 + p {
+  margin-top: 0.8em;
+}
+h3 + p {
+  margin-top: 0.4em;
+}
+h4 + p {
+  margin-top: 0.4em;
 }
 a {
   color: var(--link-col);
@@ -95,6 +110,15 @@ hr.small {
   border-width: 0.25rem;
   border-color: inherit;
   border-radius: 0.1875rem;
+}
+
+
+p {
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+}
+p + ul {
+  margin-top: 0;
 }
 
 /* fix in-page anchors to not be behind fixed header */
@@ -864,6 +888,10 @@ table tr th :last-child,
 table tr td :last-child {
   margin-bottom: 0;
 }
+.center-table {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* --- Code blocks --- */
 
@@ -914,6 +942,12 @@ pre {
   color: rgba(0,0,0,0.3);
   border-radius: 0;
   border-right: 2px solid #444;
+}
+pre.highlight {
+  display: table;
+  margin: 1em auto;
+  text-align: left;
+  min-width: 30ch;
 }
 
 /* Make line numbers unselectable: excludes line numbers from copy-paste user ops */
