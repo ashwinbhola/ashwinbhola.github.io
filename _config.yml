@@ -20,7 +20,7 @@ author: Ashwin Bhola
 ###############################################
 
 navbar-links:
-  Home: "https://ashwinbhola.github.io"
+  Home: "/"
   About Me: "aboutme"
   Categories:
     - Philosophy: "philosophy"
