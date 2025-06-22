@@ -28,6 +28,16 @@ common-js:
 <!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
 {% include head.html %}
 
+<script>
+  const showCounter = new URLSearchParams(window.location.search).has("debug");
+  if (showCounter) {
+    const img = document.createElement("img");
+    img.src = "https://hits.sh/ashwinbhola/ashwinbhola.github.io.svg";
+    img.alt = "Visitor Count";
+    document.body.appendChild(img);
+  }
+</script>
+
 <body>
   <!-- particles.js container -->   
   <div id="particles-js"></div>
