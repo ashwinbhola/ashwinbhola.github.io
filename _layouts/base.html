@@ -29,13 +29,16 @@ common-js:
 {% include head.html %}
 
 <script>
-  const showCounter = new URLSearchParams(window.location.search).has("debug");
-  if (showCounter) {
-    const img = document.createElement("img");
-    img.src = "https://hits.sh/ashwinbhola/ashwinbhola.github.io.svg";
-    img.alt = "Visitor Count";
-    document.body.appendChild(img);
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const showCounter = new URLSearchParams(window.location.search).has("debug");
+    if (showCounter) {
+      const img = document.createElement("img");
+      img.src = "https://hits.sh/ashwinbhola/ashwinbhola.github.io.svg";
+      img.alt = "Visitor Count";
+      img.style = "position: fixed; bottom: 10px; right: 10px; z-index: 999;";
+      document.body.appendChild(img);
+    }
+  });
 </script>
 
 <body>
