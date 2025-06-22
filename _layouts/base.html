@@ -30,7 +30,8 @@ common-js:
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const showCounter = new URLSearchParams(window.location.search).has("debug");
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("debug") === "counter") {
     if (showCounter) {
       const img = document.createElement("img");
       img.src = "https://hits.sh/ashwinbhola/ashwinbhola.github.io.svg";
