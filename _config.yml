@@ -301,6 +301,7 @@ exclude:
   - screenshot.png
   - docs/
 
+url: "https://ashwinbhola.github.io"
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
