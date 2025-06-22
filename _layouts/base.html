@@ -32,7 +32,6 @@ common-js:
   document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     if (params.get("debug") === "counter") {
-    if (showCounter) {
       const img = document.createElement("img");
       img.src = "https://hits.sh/ashwinbhola/ashwinbhola.github.io.svg";
       img.alt = "Visitor Count";
