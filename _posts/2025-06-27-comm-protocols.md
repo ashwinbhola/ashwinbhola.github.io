@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ""
-subtitle: "Real-Time Communication on the Web: WebSockets, SSE, and Polling Explained"
+title: "💬 From Polling to WebSockets: How the Web Learned to Talk in Real Time"
+subtitle: "Explore short polling, long polling, SSE, and WebSockets, and how they power real-time communication on the web"
 tags: ["system-design"]
 readtime: true
 ---
@@ -10,7 +10,7 @@ In the last few posts, we explored HTTP and the **client-server model** that und
 
 ![RR](/assets/img/sys_design/comm_protocols/request_response.png){: .mx-auto.d-block :}
 
-In the traditional HTTP based client-server model, every interaction beings with the client: it asks for something and the server serves its request. Thus, a response from server has to be **preceeded** by a request from the client. This model works well for a lot of systems but can all modern systems rely on it? Think of WhatsApp: Can we build **real time chat experience** using just this request-response pattern? 
+In the traditional HTTP based client-server model, every interaction beings with the client: it asks for something and the server serves its request. Thus, a response from server has to be **preceeded** by a request from the client. This model works well for a lot of systems but can all modern systems rely on it? Think of WhatsApp: Can we build **real time chat experience** using just this request-response pattern?
 
 Not really. In a chat application, you require the servers to push messages to your device the moment they arrive, without yout device constantly having to ask, *“Any new messages?”*. This is exactly how the traditional HTTP request-response model starts to break down for real-time use cases: real time dashboards, streaming apps, instant notifications, collaborative editing tools - they all need something more. Let's dive into some **communication protocols** that help us build these systems.
 
@@ -55,6 +55,11 @@ One thing worth noting: SSE **doesn’t support binary payloads**, so it’s not
 
 Sidenote: While SSE works well over `HTTP/1.1`, it doesn’t play nicely with `HTTP/2` due to its **multiplexing behavior**, which can interfere with the real-time delivery of event streams. As for `HTTP/3`, it’s built on QUIC (which uses UDP), whereas SSE relies on a single, ordered, long-lived TCP connection. For now, sticking with `HTTP/1.1` remains the most reliable choice for SSE.
 
+### Practical Considerations for SSE
+1. **Scaling**: If you're running multiple server instances, a message intended for a client might not reach them if they’re connected to a different instance. To solve this, tools like Redis Pub/Sub, Kafka, or message queues are commonly used to fan out messages across servers
+2. **Reconnection & Event IDs**: SSE includes built-in automatic reconnection, and the `id:` field helps clients resume from the last message they received. But this means your server needs to support replay or caching if you want robust reliability across reconnections
+3. **Proxy and Load Balancer Timeouts**: Since SSE connections stay open for a long time, reverse proxies (like Nginx) and load balancers might mistakenly think they're idle and close them. To prevent this, servers often send lightweight heartbeat messages like `: keep-alive\n\n` to keep the connection active
+
 ## WebSockets: Full-Duplex, Persistent Communication
 
 ![WS](/assets/img/sys_design/comm_protocols/websockets.png){: .mx-auto.d-block :}
@@ -88,3 +93,21 @@ WebSocket communication remains open as long as needed. The TCP layer guarantees
 WebSockets are a **go-to choice** for use cases that need **real-time updates** or **low-latency bidirectional communication**, such as chat apps, multiplayer games, collaborative editors, live stock/crypto feeds, and notification systems.
 
 **Secure** WebSocket connections use the `wss://` scheme, much like how secure HTTP uses `https://`. This ensures that the WebSocket traffic is **encrypted using TLS**, protecting it from eavesdropping and tampering. WebSockets are widely supported across modern browsers and environments. Libraries like `Socket.IO` often fall back to long polling or SSE when WebSockets aren’t available, for example, due to **restrictive firewalls or proxy settings**.
+
+### Practical Considerations for WebSockets
+
+1. **Scaling**: Each user maintains an open connection with the server. So if you have a million users, your backend must be able to handle a million concurrent WebSocket connections. In distributed systems, users may be connected to different application servers, meaning one user might send a message to another who’s connected elsewhere. To handle this, tools like Redis Pub/Sub or message queues (like Kafka or RabbitMQ) are often used to broadcast messages across servers
+2. **Load Balancing**: WebSockets require careful load balancing. Since the connection is long-lived, it's common to use sticky sessions to ensure a user consistently connects to the same server. This reduces the complexity for your message routing layer, especially if you're keeping track of which users are connected to which servers
+3. **Connection Limits**: If a user sends too many messages too quickly, it can overload the server. To prevent abuse and maintain system stability, implement rate limits, timeouts, and possibly authentication checks to manage usage patterns and protect resources
+
+## Protocol Comparison
+<br>
+
+| Feature         | Short Polling  | Long Polling  | SSE         | WebSockets                 |
+| --------------- | -------------- | ------------- | ----------- | -------------------------- |
+| Direction       | C ➝ S          | C ➝ S (wait)  | S ➝ C       | C ⇄ S                      |
+| Full-Duplex     | ✘              | ✘             | ✘           | ✔️                         |
+| Binary Support  | ✘              | ✘             | ✘           | ✔️                         |
+| Complexity      | Low            | Low-Medium    | Medium      | High                       |
+| Ideal Use Case  | Simple polling | Notifications | Server push | Chat, games, realtime data |
+
