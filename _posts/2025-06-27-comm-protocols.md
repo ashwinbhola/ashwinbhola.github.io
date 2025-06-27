@@ -109,5 +109,8 @@ WebSockets are a **go-to choice** for use cases that need **real-time updates** 
 | Full-Duplex     | ✘              | ✘             | ✘           | ✔️                         |
 | Binary Support  | ✘              | ✘             | ✘           | ✔️                         |
 | Complexity      | Low            | Low-Medium    | Medium      | High                       |
-| Ideal Use Case  | Simple polling | Notifications | Server push | Chat, games, realtime data |
 
+
+The best way to really understand these protocols is to implement them yourself. If you're curious, [this](https://github.com/ashwinbhola/experimental/tree/main/http_communication_protocols) walks through Python implementations of short/long polling and SSE, and [this](https://github.com/ashwinbhola/experimental/tree/main/websockets) one covers how to build a WebSocket server in Python.
+
+Real-time on the web isn’t magic, it’s just clever protocols and good infrastructure. Hope this helped clear the fog. Happy building!
