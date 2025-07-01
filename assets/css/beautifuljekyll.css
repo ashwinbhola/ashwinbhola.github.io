@@ -46,7 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   line-height: 1.6;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.15px;
   word-spacing: 0.5px;
 }
 body > main {
