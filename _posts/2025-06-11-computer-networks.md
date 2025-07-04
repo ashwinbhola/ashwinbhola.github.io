@@ -54,7 +54,7 @@ Each protocol handles a specific part of the communication puzzle, ensuring that
 
 **IP (Internet Protocol)** dominates the Network layer of the OSI model. It's job? **Addressing and routing** i.e. figuring out where your data needs to go and how to get it there.
 
-IP breaks down the data segments coming from the Transport Layer (Layer 4) into smaller, manageable chunks called **packets**. Each packet is tagged with a source and destination using an **IP header** (typically 20–60 bytes), and then routed across the internet through multiple hops and networks. The IP header also contains a field called the **Protocol Number**, which helps the recipient machine identify whether the payload is TCP, UDP, ICMP, etc. 
+IP breaks down the data segments coming from the Transport Layer (Layer 4) into smaller, manageable chunks called **packets**. Each packet is tagged with a source and destination using an **IP header** (typically 20-60 bytes), and then routed across the internet through multiple hops and networks. The IP header also contains a field called the **Protocol Number**, which helps the recipient machine identify whether the payload is TCP, UDP, ICMP, etc. 
 
 IP is focused **solely on delivery**. IP doesn't concern itself with:
 - What's inside the packet
@@ -128,7 +128,7 @@ To initiate this connection, TCP uses a **three step handshake**:
 
 Once connected, TCP ensures **reliable, ordered delivery** through a number of built-in mechanisms. Every TCP segment that is sent is **numbered** (so it arrives in order), **checked for damages** (error checking), and **confirmed** when delivered (acknowledgement). If something is lost or corrupted, it is automatically re-sent.
 
-Data from the application layer (Layers 5–7 of the OSI model) is encapsulated into **TCP segments**, each with a header that’s 20 to 60 bytes long. The header includes:
+Data from the application layer (Layers 5-7 of the OSI model) is encapsulated into **TCP segments**, each with a header that’s 20 to 60 bytes long. The header includes:
 - **Source and Destination Ports**
 - **Sequence numbers**: Indicate where this segment fits in the overall data stream
 - **Acknowledgment numbers**: Confirms safe delivery of everything received so far and tells the sender exactly where to resume

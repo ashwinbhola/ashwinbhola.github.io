@@ -28,7 +28,7 @@ The natural next step? Ask the server to respond only when it has new data for t
 
 While this does **cut down on unnecessary requests** from the client and empty responses from the server, it does have its diadvantages: the client gets only one response per request, so it still needs to start a new request for every new message. It's **closer to real-time**, but not there yet.
 
-> Sidenote: Long polling is still used under the hood by some frameworks as a fallback mechanism. For example, libraries like Socket.IO fall back to long polling if WebSockets aren’t supported by the client or network.
+> 📝 Note: Long polling is still used under the hood by some frameworks as a fallback mechanism. For example, libraries like Socket.IO fall back to long polling if WebSockets aren’t supported by the client or network.
 
 ## Server-Sent Events (SSE): One-Way Real-Time Streaming
 
@@ -53,7 +53,7 @@ SSE is especially useful in applications where data needs to flow **only from th
 
 One thing worth noting: SSE **doesn’t support binary payloads**, so it’s not ideal for streaming large or complex data formats. For use cases like that, WebSockets might be a better fit.
 
-Sidenote: While SSE works well over `HTTP/1.1`, it doesn’t play nicely with `HTTP/2` due to its **multiplexing behavior**, which can interfere with the real-time delivery of event streams. As for `HTTP/3`, it’s built on QUIC (which uses UDP), whereas SSE relies on a single, ordered, long-lived TCP connection. For now, sticking with `HTTP/1.1` remains the most reliable choice for SSE.
+> 📝 Note: While SSE works well over `HTTP/1.1`, it doesn’t play nicely with `HTTP/2` due to its **multiplexing behavior**, which can interfere with the real-time delivery of event streams. As for `HTTP/3`, it’s built on QUIC (which uses UDP), whereas SSE relies on a single, ordered, long-lived TCP connection. For now, sticking with `HTTP/1.1` remains the most reliable choice for SSE.
 
 ### Practical Considerations for SSE
 1. **Scaling**: If you're running multiple server instances, an event intended for multiple clients might not reach them if they’re connected to a different instances. To solve this, tools like Redis Pub/Sub, Kafka, or message queues are commonly used to fan out events across servers

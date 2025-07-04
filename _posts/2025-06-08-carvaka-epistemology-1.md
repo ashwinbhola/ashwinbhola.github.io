@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How Cārvāka Darśana Rejects Causality?
+title: 🏔️ How Cārvāka Darśana Rejects Causality?
 subtitle: Cārvāka's Epistemology
 tags: [philosophy]
 readtime: true
@@ -14,12 +14,11 @@ Thus, Cārvāka Darśana holds that we should believe in existence of something 
 
 The main focus of this article, however, is on how Cārvāka Darśana rejects causality. To understand this, we must first examine how it rejects inference (Anumāna Pramāṇa) as a valid means of acquiring knowledge:
 
-```
-Observation: There is smoke on the hill
-Known Universal Fact: Where there is smoke, there is fire
+{: .box-note} 
+**Observation**: There is smoke on the hill <br>
+**Known Universal Fact**: Where there is smoke, there is fire <br><br>
+**Inferred (from above two)**: There must be fire on the hill
 
-Inferred (from above two): There must be fire on the hill
-```
 
 For Inference, we go from Pratyakṣa (direct observation) to Anumāna (inference) using a Vyāpti, which is a known universal connection between two phenomena. Vyāpti therefore is the nerve centre of Anumāna Pramāṇa i.e. it serves as the logical foundation that makes inference possible. For inference to be considered a valid source of knowledge, Vyāpti must be universal, unconditional, and necessary. Otherwise, the knowledge obtained through inference would be subject to exceptions and corner cases, making it unreliable.
 
