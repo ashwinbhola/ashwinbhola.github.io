@@ -199,7 +199,7 @@ Because it enables **smart, content-aware traffic routing**.
 
 All this power comes at a cost. Because Layer 7 load balancers terminate connections, inspect traffic deeply, and often modify it, they introduce **more latency and consume more CPU resources** than simpler load balancers. But in return, you get the fine-grained control that modern applications often need.
 
-### 4. Use Cases
+### Use Cases
 <br>
 
 | Load Balancing Type | OSI Layer | Real-World Application Examples |
