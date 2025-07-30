@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Brains Behind the Balance: A Deep Dive into Load Balancing Algorithms"
+title: "🔬 The Brains Behind the Balance: A Deep Dive into Load Balancing Algorithms"
 subtitle: "From Simple Cycles to Resourceful Decisions: Understand How Digital Traffic Cops Decide Where Your Requests Go"
 tags: ["system-design"]
 readtime: true
