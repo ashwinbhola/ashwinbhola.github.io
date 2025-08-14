@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Madhyamaka Shunyavada: Nagarjuna’s Philosophy Transcending Logic’s Edge"
+title: "🌀 Madhyamaka Shunyavada: Nagarjuna’s Philosophy Transcending Logic’s Edge"
 subtitle: "The Middle Path that Dissolves Dualities and Reveals the Space Where Truth Breathes"
 tags: ["philosophy"]
 readtime: true
