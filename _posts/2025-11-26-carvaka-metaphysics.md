@@ -6,7 +6,7 @@ tags: ["philosophy"]
 readtime: true
 ---
 
-In the [previous post](https://ashwinbhola.github.io/2025-06-11-computer-networks) on Carvaka Darshan, we looked at the arguments they used to reject inference as a valid source of knowledge. They consider only perception as a means to know the truth, grounding their philosophy in perceptual empiricism.
+In the [previous post](https://ashwinbhola.github.io/2025-06-08-carvaka-epistemology-1) on Carvaka Darshan, we looked at the arguments they used to reject inference as a valid source of knowledge. They consider only perception as a means to know the truth, grounding their philosophy in perceptual empiricism.
 
 We must first ask ourselves: what sources do we have on Carvaka Darshan? Unfortunately, we don't have a single authentic source written by the Carvakas themselves about their philosophy. It is only when other philosophers criticize Carvaka philosophy that we find references to what they believed. But a conflict of interest is hiding here. No philosopher in history has ever objectively viewed and written about a competitor's philosophy. I’ll get back to this issue later in the post.
 
@@ -54,7 +54,7 @@ When Socrates said “Knowledge is virtue,” he wasn’t talking about the kind
 
 Buddha completely rejected verbal testimony, and his rejection of the Vedas is the reason Buddhism is considered a heterodox school. He also suggested that people find their own path to the ultimate truth, which is why he said “Appo Deepo Bhava,” meaning “Be a light unto yourself.” It is no surprise that the priestly class tried their best not to let his ideology survive.
 
-> I often think about how the Mahabharata is estimated to have happened at least 5000 years ago and the Bhagavad Gita is said to have been written around 2500–3000 years ago by someone who was not even present there. How can we believe everything the book says when it was orally transmitted for thousands of years? Moreover, we also know that the number of verses in the Mahabharata has increased substantially compared to its first version.
+I often think about how the Mahabharata is estimated to have happened at least 5000 years ago and the Bhagavad Gita is said to have been written around 2500–3000 years ago by someone who was not even present there. How can we believe everything the book says when it was orally transmitted for thousands of years? Moreover, we also know that the number of verses in the Mahabharata has increased substantially compared to its first version.
 
 I am not saying that mantras are useless or that our authorless books are full of lies. I am simply hoping that we can learn to question these things openly. Otherwise, we will never be pioneers in science, philosophy, or spirituality.
 
