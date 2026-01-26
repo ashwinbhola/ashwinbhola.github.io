@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Physical Brain and the Mystery of Mind: From Descartes to Psychology"
+title: "🧠 The Physical Brain and the Mystery of Mind: From Descartes to Psychology"
 subtitle: "Why Your Brain Might Be Playing Mind Games"
 tags: ["philosophy"]
 readtime: true
