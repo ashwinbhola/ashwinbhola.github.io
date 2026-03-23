@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🌸 Why Can't We Accept We Might Be Wrong? A Jain Philosophy Perspective"
+title: "🌻 Why Can't We Accept We Might Be Wrong? A Jain Philosophy Perspective"
 subtitle: "What Jainism and modern psychology have to say on why we blame everyone but ourselves"
 tags: ["philosophy"]
 readtime: true
