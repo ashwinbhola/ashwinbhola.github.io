@@ -33,7 +33,7 @@ html {
 
 body {
   font-family: var(--body-font);
-  font-size: 1.16rem;
+  font-size: 1.2rem;
   font-weight: 300;
   text-shadow: 0 0 0.4px currentColor;
   color: var(--text-col);

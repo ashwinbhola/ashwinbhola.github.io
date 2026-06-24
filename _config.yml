@@ -22,9 +22,6 @@ author: Ashwin Bhola
 navbar-links:
   Home: "/"
   About Me: "aboutme"
-  Categories:
-    - Philosophy: "philosophy"
-    - System Design: "system_design"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
