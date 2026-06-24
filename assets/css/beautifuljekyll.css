@@ -35,7 +35,7 @@ body {
   font-family: var(--body-font);
   font-size: 1.16rem;
   font-weight: 300;
-  text-shadow: 0 0 0.3px currentColor;
+  text-shadow: 0 0 0.4px currentColor;
   color: var(--text-col);
   position: relative;
   background-color: var(--page-col);
