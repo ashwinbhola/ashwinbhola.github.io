@@ -3,7 +3,7 @@ layout: null
 ---
 
 @import url("pygment_highlights.css");
-@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
 
 :root {
   /* config file CSS variables */
@@ -34,7 +34,7 @@ html {
 body {
   font-family: var(--body-font);
   font-size: 1.16rem;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--text-col);
   position: relative;
   background-color: var(--page-col);
@@ -552,7 +552,7 @@ footer .footer-custom-content {
   font-size: 1.125rem;
   font-style: italic;
   margin: 0 0 0.625rem;
-  font-family: var(--body-font);
+  font-family: var(--header-font);
 }
 .post-heading .post-meta {
   display: inline-block;
@@ -753,6 +753,9 @@ nav.top-nav-short-permanent ~ header > .intro-header.big-img {
   font-family: var(--header-font);
   font-weight: 300;
   margin: 0.625rem 0 0;
+}
+.intro-header .page-heading .page-subheading {
+  font-family: var(--body-font);
 }
 .intro-header .post-heading .post-subheading {
   margin-bottom: 1.25rem;
