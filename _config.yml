@@ -272,7 +272,18 @@ kramdown:
   input: GFM
 
 # Default YAML values (more information on Jekyll's site)
+collections:
+  system_design:
+    output: true
+    permalink: /:year-:month-:day-:title/
+
 defaults:
+  -
+    scope:
+      path: ""
+      type: "system_design"
+    values:
+      layout: "post"
   -
     scope:
       path: ""
