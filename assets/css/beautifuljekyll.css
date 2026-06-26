@@ -3,7 +3,7 @@ layout: null
 ---
 
 @import url("pygment_highlights.css");
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 :root {
   /* config file CSS variables */
@@ -20,7 +20,7 @@ layout: null
   --footer-hover-col: {{ site.footer-hover-col | default: "#0085A1" }};
 
   /* common CSS variables */
-  --body-font: 'Kalam', 'Source Sans 3', 'Trebuchet MS', 'Lora', 'Times New Roman', serif;
+  --body-font: 'Patrick Hand', 'Source Sans 3', 'Trebuchet MS', 'Lora', 'Times New Roman', serif;
   --header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --mid-col: #808080;
 }
@@ -35,7 +35,7 @@ body {
   font-family: var(--body-font);
   font-size: 1.2rem;
   font-weight: 300;
-  text-shadow: 0 0 0.35px currentColor;
+
   color: var(--text-col);
   position: relative;
   background-color: var(--page-col);
