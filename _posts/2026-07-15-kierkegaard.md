@@ -6,7 +6,7 @@ tags: ["philosophy"]
 readtime: true
 ---
 
-The voyage of philosophy throughout history and across cultures has been a search for an objective absolute truth. While many thinkers have emphasised what this ultimate truth is, others have focused on how we can come to know it. While most of these intellectuals have assumed that there is something objective and absolute to be known, a Danish philosopher, Søren Kierkegaard, challenged this very assumption.
+The voyage of philosophy throughout history and across cultures has been a search for an objective absolute truth. While many thinkers have emphasised what this ultimate truth is, others have focused on how we can come to know it. Although most of these intellectuals assumed that there is something objective and absolute to be known, a Danish philosopher, Søren Kierkegaard, challenged this very assumption.
 
 Kierkegaard is often regarded as the father of existentialism, a philosophical doctrine that emphasises existence over essence. But aren't all philosophies concerned with existence? I believe that while a lot of them do talk about existence, most philosophers are concerned more with the essence of things, which for Kierkegaard are hollow abstractions that point to nothing concrete. Plato's universals in the ideal world and Spinoza's substance are two examples of such abstractions.
 
